@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import FirstComponent from './Components/firstcomponent';
 
 const App = () => {
@@ -12,6 +12,9 @@ const App = () => {
     setx(x+1);
     console.log(x);
   }
+
+  const inputRef = useRef(null);
+  const [data, setData] = useState([]);
   return (
     <div>
  {array.map((year)=> {return <p>{year}</p>})}
@@ -20,7 +23,12 @@ const App = () => {
  <button onClick={(btnClick)}>click me</button>
  <FirstComponent data={x} fn={setx}/>  
  {/* to pass values to components we use props, to pass value to props we use data  */}
+<br />
+ <input ref={inputRef} type="text" />
+ <button onClick={() => {setData([...data,inputRef.current.value])}}>submit</button>
+ {data.map((item,index) =>{return <h2 key={index}>{item}</h2>})}
     </div>
+    
    
   )
 }
