@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import FirstComponent from './Components/firstcomponent';
 
 const App = () => {
 
@@ -16,8 +17,9 @@ const App = () => {
  {array.map((year)=> {return <p>{year}</p>})}
  {gender === "boy" ? <h2>boy</h2>:<h2>girl</h2>}
 
- {x}
  <button onClick={(btnClick)}>click me</button>
+ <FirstComponent data={x} fn={setx}/>  
+ {/* to pass values to components we use props, to pass value to props we use data  */}
     </div>
    
   )
